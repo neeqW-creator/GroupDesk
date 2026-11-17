@@ -1,11 +1,9 @@
 # GroupDesk — design aplikacji
 
 **Wersja dokumentu:** 1.0  
-**Data eksportu:** 16 listopada 2026 r.  
-**Projekt:** GroupDesk — demo CRM grup hotelowych  
-**Demo:** https://groupdesk-demo-mw-2026.smart-2809.chatgpt.site  
-**Źródło:** `dist/index.html`, opublikowana wersja projektu 4  
-**Rewizja źródła:** `d6e2ca46cc869e8d69ccd782ca2262a99d7c31c6`
+**Aktualizacja:** 17 listopada 2026 r.
+**Projekt:** GroupDesk — CRM grup hotelowych
+**Źródło:** lokalny `index.html`, motyw na podstawie Hotel team / Urlopy · MVP 1.0
 
 ## 1. Cel dokumentu
 
@@ -16,12 +14,12 @@ Nie jest pełną specyfikacją docelowego CRM. Funkcje planowane, takie jak Mews
 ## 2. Kierunek wizualny
 
 - Narzędzie do codziennej pracy sprzedaży i recepcji, z naciskiem na czytelność danych i kolejnego działania.
-- Jasne tło przestrzeni roboczej, białe panele i granatowa nawigacja.
-- Kolor morski wyróżnia główne działania i wybrany wariant.
+- Jasne tło przestrzeni roboczej, białe panele i biała nawigacja.
+- Głęboka zieleń wyróżnia główne działania i wybrany wariant.
 - Informacje finansowe mają wyraźną hierarchię i wyrównanie liczb.
 - Kolorom stanów towarzyszą etykiety tekstowe.
 - Nazwy ekranów, przycisków i komunikaty są po polsku.
-- Interfejs nie wymaga pobierania zewnętrznych fontów, ilustracji ani bibliotek.
+- Manrope i DM Sans pochodzą z Google Fonts. Bez połączenia aplikacja używa systemowych krojów zastępczych.
 
 ## 3. Kolory
 
@@ -29,49 +27,49 @@ Nie jest pełną specyfikacją docelowego CRM. Funkcje planowane, takie jak Mews
 
 | Token | Wartość | Zastosowanie |
 |---|---|---|
-| `--bg` | `#f3f5f8` | Tło aplikacji |
+| `--bg` | `#f6f7f2` | Tło aplikacji |
 | `--paper` | `#ffffff` | Panele, formularze, górny pasek |
-| `--ink` | `#1b2d40` | Tekst główny |
-| `--muted` | `#5c6b7a` | Opisy pomocnicze, etykiety, metadane |
-| `--line` | `#dce3ea` | Obramowania i separatory |
-| `--brand` | `#17616c` | Akcje główne, aktywne zakładki, zaznaczenie wariantu |
-| `--soft` | `#eaf4f3` | Neutralne komunikaty i etykiety stanu |
-| `--nav` | `#172d3c` | Tło bocznej nawigacji |
-| `--warn` | `#945115` | Tekst etykiety ostrzegawczej |
-| `--warm` | `#fff2df` | Tło ostrzeżeń |
-| `--red` | `#a63838` | Tekst akcji usuwania |
+| `--ink` | `#203c36` | Tekst główny |
+| `--muted` | `#5b6c63` | Opisy pomocnicze, etykiety, metadane |
+| `--line` | `#e2e8e2` | Obramowania i separatory |
+| `--brand` | `#285c4d` | Akcje główne, aktywne zakładki, zaznaczenie wariantu |
+| `--soft` | `#e8efe6` | Neutralne komunikaty i etykiety stanu |
+| `--nav` | `#fff` | Tło bocznej nawigacji |
+| `--warn` | `#80551b` | Tekst etykiety ostrzegawczej |
+| `--warm` | `#fcf0d8` | Tło ostrzeżeń |
+| `--red` | `#904836` | Tekst akcji usuwania |
 
 ### 3.2. Kolory dodatkowe
 
 | Element | Wartość |
 |---|---|
-| Aktywna pozycja nawigacji | `#2b4959` |
-| Nawigacja po najechaniu | `#244251` |
-| Tekst nawigacji | `#d5e0e6` |
-| Akcent znaku GroupDesk | `#79cbc8` |
-| Tło wybranego wariantu | `#f7fbfb` |
-| Obramowanie pól formularza | `#cdd7e0` |
-| Tło obowiązkowego pola grupy | `#edf5ff` |
-| Obramowanie obowiązkowego pola | `#91aec9` |
-| Gwiazdka pola obowiązkowego | `#28577f` |
-| Obrys fokusu | `#83b9c2` |
-| Przyciemnienie tła dialogu | `#15283d88` |
+| Aktywna pozycja nawigacji | `#e8efe6` |
+| Nawigacja po najechaniu | `#f2f5ef` |
+| Tekst nawigacji | `#203c36` |
+| Akcent znaku GroupDesk | `#a06d36` |
+| Tło wybranego wariantu | `#f4f7f1` |
+| Obramowanie pól formularza | `#ced8d0` |
+| Tło obowiązkowego pola grupy | `#f7f3e9` |
+| Obramowanie obowiązkowego pola | `#ac9368` |
+| Gwiazdka pola obowiązkowego | `#80551b` |
+| Obrys fokusu | `#d59a47` |
+| Przyciemnienie tła dialogu | `#102f2966` |
 
 Obecna aplikacja ma jeden jasny motyw. Tryb ciemny nie jest zaimplementowany.
 
 ## 4. Typografia
 
-Stos fontów: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`.
+DM Sans dla treści i pól. Manrope dla nagłówków, marki i wartości wskaźników.
 
 | Element | Rozmiar i właściwości |
 |---|---|
-| Tekst podstawowy | 14 px, interlinia 1.55 |
-| Nagłówek strony `h1` | 27 px, interlinia 1.25, odstęp liter -0.7 px |
-| Nagłówek sekcji `h2` | 18 px, odstęp liter -0.2 px |
-| Nagłówek elementu `h3` | 15 px |
+| Tekst podstawowy | 14 px, interlinia 1.6 |
+| Nagłówek strony `h1` | 30 px, interlinia 1.25, odstęp liter -1.2 px |
+| Nagłówek sekcji `h2` | 23 px, odstęp liter -0.6 px |
+| Nagłówek elementu `h3` | 17 px |
 | Opis pomocniczy, etykieta, status | 12 px |
 | Treść tabel | 13 px |
-| Nagłówek tabeli | 12 px, grubość 500 |
+| Nagłówek tabeli | 11 px, grubość 600 |
 | Wartość wskaźnika | 30 px, grubość 650 |
 | Cena wariantu | 25 px, grubość 650 |
 | Przyciski | Grubość 500 |
@@ -82,22 +80,23 @@ Kwoty są formatowane przez `Intl` dla `pl-PL`, jako PLN. Komórki liczbowe uży
 
 ### 5.1. Komputer
 
-- Dwie kolumny: nawigacja 216 px oraz elastyczna część robocza.
+- Dwie kolumny: nawigacja 245 px oraz elastyczna część robocza.
 - Panel nawigacji: znak GroupDesk, przyciski ekranów i informacja o trybie lokalnym.
 - Górny pasek: stan zapisu, autor wpisów, eksport danych.
 - Treść: maksymalna szerokość 1440 px, marginesy wewnętrzne 28 px pionowo i 30 px poziomo.
 - Nagłówek ekranu: tytuł i opis po lewej, przyciski po prawej; elementy zawijają się przy braku miejsca.
+- Pulpit ma jasną zieloną sekcję powitalną z przyciskiem „Nowa grupa”.
 - Stopka: informacja o lokalnym zapisie i ograniczeniach demonstracji.
 
 ### 5.2. Siatki i odstępy
 
 | Element | Parametry |
 |---|---|
-| Wskaźniki pulpitu | 3 kolumny, odstęp 14 px |
+| Wskaźniki pulpitu | 3 kolumny, odstęp 14 px, ciemnozielona karta otwartych spraw |
 | Układ podsumowania grupy | Proporcje 1.4 : 1, odstęp 18 px |
 | Formularz | 2 kolumny, odstęp 15 px; wybrane pola na całą szerokość |
 | Karty wariantów | Automatyczna liczba kolumn, minimalna szerokość 250 px, odstęp 14 px |
-| Panel | Padding 20 px, odstęp dolny 18 px, promień 12 px |
+| Panel | Padding 20 px, odstęp dolny 18 px, promień 13 px |
 | Grupa przycisków | Odstęp 8 px, zawijanie |
 | Wiersz danych | Padding pionowy 13 px i dolny separator |
 
@@ -105,10 +104,10 @@ Kwoty są formatowane przez `Intl` dla `pl-PL`, jako PLN. Komórki liczbowe uży
 
 | Szerokość | Zachowanie |
 |---|---|
-| Powyżej 950 px | Pełny układ z boczną nawigacją |
-| Do 950 px | Nawigacja 175 px; podsumowanie grupy przechodzi do jednej kolumny |
-| Do 700 px | Nawigacja nad treścią; przyciski zawijane; formularze i siatki odczytu jednokolumnowe |
-| Do 700 px | Wskaźniki w dwóch kolumnach, trzeci na pełną szerokość; pola edycyjne 16 px; przyciski co najmniej 44 px wysokości |
+| Powyżej 1100 px | Pełny układ z boczną nawigacją |
+| Do 1100 px | Nawigacja 205 px; podsumowanie grupy przechodzi do jednej kolumny |
+| Do 760 px | Nawigacja nad treścią; przyciski zawijane; formularze i siatki odczytu jednokolumnowe |
+| Do 760 px | Wskaźniki w dwóch kolumnach, trzeci na pełną szerokość; pola edycyjne 16 px; przyciski co najmniej 44 px wysokości |
 | Do 390 px | Wskaźniki i warianty w jednej kolumnie |
 
 Tabele mogą przewijać się poziomo w obrębie kontenera. Dialog ma maksymalną wysokość 90vh i własne przewijanie.
@@ -139,7 +138,7 @@ Ekrany przełączają się wewnątrz pojedynczego dokumentu HTML. Nie mają osob
 
 ### 7.1. Przyciski
 
-- Główny: morski, biały tekst; zapis i najważniejsze działanie.
+- Główny: ciemnozielony, biały tekst; zapis i najważniejsze działanie.
 - Standardowy: biały, obramowany; edycja, przejście do listy i druk.
 - Usuwanie: tekst w kolorze czerwonym.
 - Mały: 12 px i minimum 34 px wysokości na komputerze.
@@ -162,16 +161,16 @@ Etykiety opisują czynność, np. „Dodaj wariant”, „Podgląd”, „Przywr
 - Natywny element `dialog`, otwierany przez `showModal()`.
 - Standardowa szerokość maksymalna 690 px; podgląd oferty 960 px.
 - Szerokość dostępna: szerokość okna minus 24 px.
-- Promień 14 px, padding 24 px; na telefonie padding 18 px.
+- Promień 17 px, padding 27 px; na telefonie padding 18 px.
 - Tytuł powiązany przez `aria-labelledby`; widoczne „Zamknij” i, w formularzach, „Anuluj”.
 
 ## 8. Formularz nowej grupy
 
-Pola obowiązkowe mają jasnoniebieskie tło, niebieskoszare obramowanie i gwiazdkę przy etykiecie. Oznaczenie bazuje bezpośrednio na atrybucie `required`, więc pozostaje zgodne z wymagalnością pola.
+Pola obowiązkowe mają jasnokremowe tło, beżowe obramowanie i gwiazdkę przy etykiecie. Oznaczenie bazuje bezpośrednio na atrybucie `required`, więc pozostaje zgodne z wymagalnością pola.
 
 Objaśnienie nad formularzem:
 
-> Pola z niebieskim tłem i gwiazdką (*) są obowiązkowe. Pozostałe możesz uzupełnić później.
+> Pola z jasnokremowym tłem i gwiazdką (*) są obowiązkowe. Pozostałe możesz uzupełnić później.
 
 | Pole | Obowiązkowe |
 |---|---|
