@@ -7,7 +7,7 @@
 1. Sprawdzić prototyp, F01 i macierz dostępu — wykonano. Prototyp to pojedynczy HTML bez backendu i bez testów. Stan początkowy Git: czysty, `main` o jeden commit przed `origin/main`.
 2. Dodać serwer, logowanie i wylogowanie — wykonano. Node 24, bez zależności zewnętrznych, oficjalne REST API Supabase Auth.
 3. Egzekwować role i obiekt po stronie serwera — wykonano dla stron. Sprzedaż `/app`, recepcja `/reception`. Dane autoryzacji wyłącznie z bieżącego `GET /auth/v1/user`, z administracyjnego `app_metadata.groupdesk`. Brak przypisania oznacza odmowę.
-4. Sprawdzić granice dostępu, udokumentować konfigurację i ograniczenia — 17 testów lokalnych PASS. Działanie trzech rzeczywistych kont testowych i końcowy odbiór F01 oczekują.
+4. Sprawdzić granice dostępu, udokumentować konfigurację i ograniczenia — 18 testów lokalnych PASS. Działanie trzech rzeczywistych kont testowych i końcowy odbiór F01 oczekują.
 
 ## Architektura i decyzje
 
@@ -32,5 +32,9 @@
 | F02–F06 / N2–N4 | Poza tą zmianą; prototyp nie stanowi implementacji bezpiecznego pilotażu |
 
 ## Następny krok
+
+### Poprawka formularza, 19.11.2026
+
+Właściciel zgłosił „Brak dostępu” po utworzeniu konta. Nadano zatwierdzoną rolę sprzedaży wskazanemu kontu przez panel Supabase; osobny odczyt potwierdził aktywne uprawnienia. Pozostałą blokadę odtworzono w prawdziwej przeglądarce bez używania haseł: `Referrer-Policy: no-referrer` powodowała `Origin: null` w natywnym POST formularza. Zmieniono politykę na `same-origin`, która zachowuje prawidłowy Origin i nie wysyła Referer do obcych stron. Warunek ochrony CSRF pozostaje bez zmian, a stronę odmowy uzupełniono o bezpieczny link do nowego formularza. Dodano test regresji polityki nagłówków i odrzucania `Origin: null`. Pierwotne testy HTTP z ręcznie ustawionym Origin nie wykryły tego zachowania przeglądarki.
 
 Właściciel tworzy trzy fikcyjne konta w testowym projekcie i nadaje ich `app_metadata.groupdesk`; następnie wykonujemy scenariusz rzeczywistego logowania z `docs/auth.md`. Kolejna faza obejmuje pełny plan F00, potwierdzenie regionu UE, wspólną bazę i RLS z testami bezpośrednich operacji. Dopiero potem można zamknąć F01 i dołączać przekazywanie kart. Do czasu odbioru korzystamy wyłącznie z fikcyjnych danych i kont.

@@ -17,7 +17,7 @@ Sprzedaż zapisuje zapytanie i ofertę, odnotowuje blokadę z Mews i przekazuje 
 | ID | Funkcja | Priorytet | Status | Weryfikacja |
 |---|---|---|---|---|
 | [F00](docs/funkcje/F00-fundament.md) | Fundament pilotażu i dane testowe | MVP-1 | Do zrobienia | Oczekuje |
-| [F01](docs/funkcje/F01-logowanie-i-dostep.md) | Logowanie i dostęp według roli oraz obiektu | MVP-1 | Częściowo: Auth i ochrona tras | 17 testów lokalnych; odbiór kont i danych oczekuje |
+| [F01](docs/funkcje/F01-logowanie-i-dostep.md) | Logowanie i dostęp według roli oraz obiektu | MVP-1 | Częściowo: Auth i ochrona tras | 18 testów lokalnych; odbiór kont i danych oczekuje |
 | [F02](docs/funkcje/F02-rejestracja-sprawy.md) | Ręczna rejestracja i edycja sprawy | MVP-1 | Do zrobienia | Oczekuje |
 | [F03](docs/funkcje/F03-oferty.md) | Warianty, wersje, wybór oferty i PDF | MVP-1 | Do zrobienia | Oczekuje |
 | [F04](docs/funkcje/F04-blokada-mews.md) | Odnotowanie ręcznej blokady Mews | MVP-1 | Do zrobienia | Oczekuje |

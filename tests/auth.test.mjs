@@ -69,6 +69,16 @@ test('anonymous visitors cannot fetch protected pages, source, configuration, or
   assert.equal(state.calls.length, 0);
 });
 
+test('login referrer policy preserves browser form Origin without sending referrers to other sites', async t => {
+  const { request } = await fixture(t);
+  const response = await request('/login');
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('referrer-policy'), 'same-origin');
+  const opaqueOrigin = await request('/login', { body: { email, password }, origin: 'null' });
+  assert.equal(opaqueOrigin.status, 403);
+  assert.match(await opaqueOrigin.text(), /href="\/login"/);
+});
+
 test('sales sign in, receive an opaque HttpOnly cookie, and open their CRM', async t => {
   const { login, request } = await fixture(t);
   const { response, cookie } = await login({ role: 'reception', next: 'https://attacker.invalid' });

@@ -130,7 +130,9 @@ export function createApp({ config, fetchImpl = fetch, now = Date.now,
     res.setHeader('Vary', 'Cookie');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('Referrer-Policy', 'no-referrer');
+    // no-referrer makes browser form POSTs send Origin: null, breaking the CSRF check.
+    // same-origin preserves form origins while withholding referrers from other sites.
+    res.setHeader('Referrer-Policy', 'same-origin');
     res.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data: blob:; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
     if (config.secure) res.setHeader('Strict-Transport-Security', 'max-age=31536000');
     try {
@@ -139,7 +141,7 @@ export function createApp({ config, fetchImpl = fetch, now = Date.now,
       if (req.headers.host !== new URL(config.origin).host) return send(res, 400, page('Nieprawidłowy adres', '<p>Otwórz aplikację pod skonfigurowanym adresem.</p>'));
       if (!['GET', 'POST'].includes(req.method)) { res.setHeader('Allow', 'GET, POST'); return send(res, 405, 'METHOD_NOT_ALLOWED', 'text/plain'); }
       if (req.method === 'POST' && (req.headers.origin !== config.origin || req.headers['sec-fetch-site'] === 'cross-site')) {
-        return send(res, 403, page('Brak dostępu', '<p>Odśwież stronę i spróbuj ponownie.</p>'));
+        return send(res, 403, page('Brak dostępu', '<p>Otwórz ponownie formularz i spróbuj jeszcze raz.</p><a href="/login">Wróć do logowania</a>'));
       }
       if (url.pathname === '/auth-guard.js' && req.method === 'GET') {
         return send(res, 200, await readFile(new URL('./src/auth-guard.js', import.meta.url), 'utf8'), 'application/javascript; charset=utf-8');
