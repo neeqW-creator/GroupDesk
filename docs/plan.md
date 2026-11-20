@@ -33,6 +33,10 @@
 
 ## Następny krok
 
+### Wdrożenie testowe na Render, 20.11.2026
+
+Gałąź `deploy/render` zawiera konfigurację usługi Node.js w regionie Frankfurt. Adres publiczny wybiera `APP_ORIGIN` albo adres przydzielony przez Render. Nasłuchiwanie na wszystkich interfejsach wymaga adresu aplikacji HTTPS. Po uruchomieniu usługi trzeba sprawdzić formularz, odmowę dostępu bez sesji i zalogowanie istniejącym kontem testowym.
+
 ### Poprawka formularza, 19.11.2026
 
 Właściciel zgłosił „Brak dostępu” po utworzeniu konta. Nadano zatwierdzoną rolę sprzedaży wskazanemu kontu przez panel Supabase; osobny odczyt potwierdził aktywne uprawnienia. Pozostałą blokadę odtworzono w prawdziwej przeglądarce bez używania haseł: `Referrer-Policy: no-referrer` powodowała `Origin: null` w natywnym POST formularza. Zmieniono politykę na `same-origin`, która zachowuje prawidłowy Origin i nie wysyła Referer do obcych stron. Warunek ochrony CSRF pozostaje bez zmian, a stronę odmowy uzupełniono o bezpieczny link do nowego formularza. Dodano test regresji polityki nagłówków i odrzucania `Origin: null`. Pierwotne testy HTTP z ręcznie ustawionym Origin nie wykryły tego zachowania przeglądarki.

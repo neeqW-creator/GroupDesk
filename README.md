@@ -69,6 +69,8 @@ Przejście testów z atrapą nie potwierdza działania kont w prawdziwym projekc
 
 ## Dokumentacja
 
+Wdrożenie testowe na Render korzysta z `render.yaml` i gałęzi `deploy/render`. Przy pierwszym wdrożeniu podaj adres i klucz publishable testowego projektu Supabase w panelu Render. Serwer używa przydzielonego adresu HTTPS i portu Render. Kontrola gotowości sprawdza formularz pod `/login`. Próbę zalogowania, wylogowania i sprawdzenia roli wykonaj na fikcyjnym koncie według [instrukcji Auth](docs/auth.md). Bezpłatna instancja może się uśpić, a restart kończy sesje.
+
 - [Specyfikacja pilotażu](docs/specyfikacja.md) i [karty funkcji](docs/funkcje/).
 - [Wytyczne wyglądu](design.md), [zasady dla agentów](AGENTS.md) i [wcześniejsza specyfikacja funkcjonalna w PDF](docs/specyfikacja.pdf).
 - [Plan prac i status Auth](docs/plan.md), [konfiguracja kont i odbiór Auth](docs/auth.md). Raporty `docs/weryfikacja/` powstają w osobnej Fazie C.

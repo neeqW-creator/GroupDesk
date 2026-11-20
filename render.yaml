@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: groupdesk-crm
+    runtime: node
+    region: frankfurt
+    plan: free
+    branch: deploy/render
+    buildCommand: node --test tests/auth.test.mjs
+    startCommand: node server.mjs
+    healthCheckPath: /login
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: BIND_HOST
+        value: 0.0.0.0
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false

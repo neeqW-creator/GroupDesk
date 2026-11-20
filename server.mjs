@@ -9,7 +9,7 @@ const IDLE_TTL = 30 * 60 * 1000;
 const MAX_SESSIONS = 1000;
 
 export function configuration(env = process.env) {
-  const origin = new URL(env.APP_ORIGIN || 'http://localhost:3000');
+  const origin = new URL(env.APP_ORIGIN || env.RENDER_EXTERNAL_URL || 'http://localhost:3000');
   const url = new URL(env.SUPABASE_URL || '');
   const key = env.SUPABASE_PUBLISHABLE_KEY || '';
   if (origin.href !== `${origin.origin}/` || origin.username || origin.password ||
@@ -217,9 +217,11 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   try {
     const config = configuration();
     const port = Number(process.env.PORT || new URL(config.origin).port || 3000);
-    if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('CONFIG');
+    const host = process.env.BIND_HOST || '127.0.0.1';
+    if (!Number.isInteger(port) || port < 1 || port > 65535 ||
+        (host !== '127.0.0.1' && (host !== '0.0.0.0' || !config.secure))) throw new Error('CONFIG');
     const server = createApp({ config });
     server.on('error', () => { console.error('Nie można uruchomić aplikacji. Kod START-02.'); process.exitCode = 1; });
-    server.listen(port, '127.0.0.1', () => console.log(`GroupDesk: ${config.origin}`));
+    server.listen(port, host, () => console.log(`GroupDesk: ${config.origin}`));
   } catch { console.error('Sprawdź konfigurację środowiska. Kod START-01.'); process.exitCode = 1; }
 }
